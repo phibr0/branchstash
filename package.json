@@ -1,0 +1,34 @@
+{
+  "name": "branchstash",
+  "version": "0.1.0",
+  "description": "Sync selected ignored files into newly created Git worktrees.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/phibr0/branchstash.git"
+  },
+  "bin": {
+    "branchstash": "dist/cli.js"
+  },
+  "files": [
+    "dist/cli.js",
+    "dist/cli.d.ts"
+  ],
+  "type": "module",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "pnpm run build && node --test dist/**/*.test.js",
+    "format": "oxfmt",
+    "lint": "oxlint"
+  },
+  "devDependencies": {
+    "@types/node": "^25.9.1",
+    "oxfmt": "^0.51.0",
+    "oxlint": "^1.66.0",
+    "typescript": "^6.0.3"
+  },
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "packageManager": "pnpm@11.1.3"
+}
