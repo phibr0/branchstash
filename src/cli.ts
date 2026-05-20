@@ -148,14 +148,18 @@ export async function runCommand(args: string[], cwd: string): Promise<SyncResul
     await mkdir(path.dirname(targetPath), { recursive: true });
 
     if (strategy === "copy") {
-      await cp(sourcePath, targetPath, {
-        recursive: true,
-        force: false,
-        errorOnExist: true,
-        dereference: false,
-        verbatimSymlinks: true,
-        mode: constants.COPYFILE_FICLONE,
-      });
+      if (process.platform === "darwin") {
+        await execFile("cp", ["-cR", sourcePath, targetPath]);
+      } else {
+        await cp(sourcePath, targetPath, {
+          recursive: true,
+          force: true,
+          errorOnExist: false,
+          dereference: false,
+          verbatimSymlinks: true,
+          mode: constants.COPYFILE_FICLONE,
+        });
+      }
       result.copied.push(relativePath);
       console.log(`copied ${relativePath}`);
       continue;
