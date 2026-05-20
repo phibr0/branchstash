@@ -1,6 +1,6 @@
 {
   "name": "branchstash",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Sync selected ignored files into newly created Git worktrees.",
   "license": "MIT",
   "repository": {

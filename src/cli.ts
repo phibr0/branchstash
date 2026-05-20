@@ -278,8 +278,4 @@ function printUsage(command: string | undefined): void {
   console.log("usage: branchstash <init|install|run>");
 }
 
-const isEntrypoint = process.argv[1] === fileURLToPath(import.meta.url);
-
-if (isEntrypoint) {
-  await main();
-}
+await main();
